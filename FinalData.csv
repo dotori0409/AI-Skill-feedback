@@ -1,0 +1,11 @@
+ID,"TimeResponse(s) 
+|actual-standard|",ToolCorrect,"Wrongs
+(%)",Complete,"UserButtonPressAmount
+|actual-standard|",Target1_StressManagement,Target2_DecisionMaking,Target3_Adaptability,
+1,200,FALSE,17,TRUE,8,,,
+1,180,FALSE,13,FALSE,7,,,
+1,111,TRUE,9,TRUE,4,,,
+1,90,TRUE,5,TRUE,5,,,
+1,80,FALSE,10,TRUE,4,,,
+1,60,TRUE,6,TRUE,3,,,
+1,50,TRUE,5,TRUE,1,,,
