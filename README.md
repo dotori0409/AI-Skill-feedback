@@ -23,40 +23,55 @@ Excess Button Press Amount: How many times did the user press the buttons on the
 The algorithm then outputs an integer percentage between 0 and 100% for each target based on the user's performance in the scenario. If the user had not completed the exercise before, the scores are fed into the chat GPT API to generate personalized improvement responses in the form of text. Else, if the user had previously attempted the exercise, their results are compared with their previous results as stored in an SQL database to generate a different personalized improvement response also in text format. The data is continually stored in the SQL database using the following schema: 
 
 Figure 1. Database Schema
-<img width="390" alt="Screen Shot 2023-07-20 at 9 50 20 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/9da67064-2608-4723-9ed5-68da0d19390a">
+
+<img width="500" alt="Screen Shot 2023-07-20 at 9 50 20 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/9da67064-2608-4723-9ed5-68da0d19390a">
 
 If the user reaches 100% completion status in all of the skills required in the scenario, their entries are removed from the SQL database to optimize performance and storage on the server. 
 
 **Results and Discussion**
-_Regression AI Implementation_
+**_Regression AI Implementation_**
 To evaluate the effectiveness of our AI assessment module, we conducted a thorough analysis using purposely generated data with a decreasing trend. The primary goal was to determine if our system would yield increasing numbers as a result. As expected, the outcome of the assessment revealed that all skills showcased a consistent upward trendline. These findings align with our initial expectations and provide evidence of the module's capability to generate favorable outcomes even when presented with valid data. This outcome affirms the robustness and reliability of our AI assessment module in delivering accurate and reliable assessments.
 
-Figure 2. AI Skill Assessment Output
-<img width="490" alt="Screen Shot 2023-07-20 at 9 52 49 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/49e90676-cc7c-475d-8a93-7704f0362107">
+_Figure 2. AI Skill Assessment Output_
 
-Figure 3. Input Error Data Trend
+<img width="500" alt="Screen Shot 2023-07-20 at 9 52 49 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/49e90676-cc7c-475d-8a93-7704f0362107">
+
+
+_Figure 3. Input Error Data Trend_
+
 <img width="320" alt="Screen Shot 2023-07-20 at 9 53 32 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/7e932142-f63e-47e4-a517-c93fde5fd1aa">
 
-Figure 4. Output Data Trend
+
+_Figure 4. Output Data Trend_
+
 <img width="620" alt="Screen Shot 2023-07-20 at 9 53 03 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/43daa41c-4a2a-4b25-9c67-c4216c0860b2">
 
-_Storing in Database_
+**_Storing in Database_**
 To ensure the precision and correctness of our MySQL schema and code, we utilized pgAdmin, an open-source administration and development platform specifically tailored for PostgreSQL. By leveraging the capabilities of this platform, we were able to rigorously test our implementation and validate the accuracy of data storage within the database.
 Throughout the testing process, we conducted various assessments and examinations to ascertain that the data were appropriately stored. We meticulously verified the integrity of the database by performing checks on the consistency, completeness, and accuracy of the stored information.
 The accompanying figures presented below provide visual evidence of the successful storage of all data in the database. These figures serve as concrete proof that our MySQL schema and code effectively perform their intended function of storing data accurately and reliably.
 
-Figure 5. Data Stored in Database
-![YdNNaS68j35Skhl0ebbQiAttqkdkDa7-xKUJSYoHgwCKllyDBEyyp9rv52qDRrvSDvbR5T8hi3e31-L-KDaVHcDUricHNkWeWWvYh6E-kfimjTmu_2iw15odVzXu](https://github.com/dotori0409/AI-feedback-system/assets/71887438/bc08e64f-1294-4fbd-99e4-cb28e769506b)
+_Figure 5. Data Stored in Database_
 
-_AI feedback_
+<img width="500" alt="Screen Shot 2023-07-20 at 10 09 39 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/c47bac80-689f-4efc-9853-67dfd261690d">
+
+**_AI feedback_**
 We have achieved successful integration of the ChatGPT API into our system, enabling us to provide personalized feedback. By utilizing this API, we have implemented a mechanism to deliver customized responses and tailored suggestions based on user interactions. This integration has allowed us to enhance the user experience and provide more relevant and accurate feedback to our users.
 
-Figure 6. AI Feedback Based on Increasing Trend
-<img width="1063" alt="Screen Shot 2023-07-20 at 10 06 22 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/c4cd580e-0a0a-4175-b6e3-15b2ea28fbad">
+_Figure 6. AI Feedback Based on Increasing Trend_
+
+<img width="1038" alt="Screen Shot 2023-07-20 at 10 10 27 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/6108e667-d0fc-4200-a66a-318109a2a248">
+
 
 **Design Iteration**
-1. The first design iteration is a type of binary classifier to classify if the user has a certain job-specific soft skill or not. These skills include stress management, decision-making, and adaptability. The initial input attributes include time response, tool correction, number of errors, user button press amount, and task completion status. The classifiers used include decision tree, random forest, and K-Nearest neighbors (KNN). It only demonstrates iteration to show the whole process to the client, so there are no additional processing methods to improve the classification performance. The classification output is binary, which means it only indicates if the user has the skills or not. Can use regression method to indicate skill level next time.
-<img width="247" alt="Screen Shot 2023-07-20 at 9 45 52 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/e5ed1c19-6f2f-41eb-ab4b-6e92d13c5177">
+The first design iteration is a type of binary classifier to classify if the user has a certain job-specific soft skill or not. These skills include stress management, decision-making, and adaptability. The initial input attributes include time response, tool correction, number of errors, user button press amount, and task completion status. The classifiers used include decision tree, random forest, and K-Nearest neighbors (KNN). It only demonstrates iteration to show the whole process to the client, so there are no additional processing methods to improve the classification performance. The classification output is binary, which means it only indicates if the user has the skills or not. Can use regression method to indicate skill level next time.
 
-2. The second design iteration is a type of regression predictor to quantify how many percents of the user has a certain job-specific soft skill or not. To easily demonstrate we only use stress management as an example. The initial input attributes are the same as the first design iteration. Three regression models used include linear regression, ridge regression, and polylinear regression.
-<img width="285" alt="Screen Shot 2023-07-20 at 9 46 35 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/681aac53-852a-41a9-a6f6-bb23c575f376">
+_Figure 7. First Design Iteration_
+
+<centre><img width="247" alt="Screen Shot 2023-07-20 at 9 45 52 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/e5ed1c19-6f2f-41eb-ab4b-6e92d13c5177"><centre>
+
+The second design iteration is a type of regression predictor to quantify how many percents of the user has a certain job-specific soft skill or not. To easily demonstrate we only use stress management as an example. The initial input attributes are the same as the first design iteration. Three regression models used include linear regression, ridge regression, and polylinear regression.
+
+_Figure 7. First Design Iteration_
+
+<centre><img width="285" alt="Screen Shot 2023-07-20 at 9 46 35 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/681aac53-852a-41a9-a6f6-bb23c575f376"><centre>
