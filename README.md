@@ -2,13 +2,19 @@
 
 This project aims to develop an Artificial Intelligence-based solution that detects users’ skills in the virtual world, analyzes their performance, and provides personalized feedback to improve their reasoning and overall performance. By coaching them according to their situation, shortcomings and potential, the solution will help improve their skills and optimize their learning experience in Virtual Reality (VR) training software. 
 
+
+
 **Assumptions:**
+
 1. Data is accurate.
 2. Data consists of only the completed results of each scenario.
 3. Individual skills can be evaluated from a number ranging from 0 to 100 with 2 decimal precision.
 4. There is an AI feedback system already created that provides personalized feedback when the skill history data is given as input.
 
+
+
 **Final Design**
+
 The final design for characterizing an individual's skills and suggesting AI-generated improvements relied on 6 predominant steps as outlined in the figure below. 
 Initially, a detailed user action and response case table was established to define the flow of events within the VR environment for each scenario. In this table, all of the alternate flows and options available to the user were presented as well as the ‘optimal’ path as defined by Inmerzum’s initial recommendations. The user would be prompted in the VR world to complete the scenario and re-do each sub-flow if the incorrect answer is selected. The incorrect selection of each answer is recorded and the AI system is used to provide personalized feedback using the Chat GPT API module. 
 
@@ -22,14 +28,17 @@ Excess Button Press Amount: How many times did the user press the buttons on the
 
 The algorithm then outputs an integer percentage between 0 and 100% for each target based on the user's performance in the scenario. If the user had not completed the exercise before, the scores are fed into the chat GPT API to generate personalized improvement responses in the form of text. Else, if the user had previously attempted the exercise, their results are compared with their previous results as stored in an SQL database to generate a different personalized improvement response also in text format. The data is continually stored in the SQL database using the following schema: 
 
-Figure 1. Database Schema
+_Figure 1. Database Schema_
 
 <img width="500" alt="Screen Shot 2023-07-20 at 9 50 20 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/9da67064-2608-4723-9ed5-68da0d19390a">
 
 If the user reaches 100% completion status in all of the skills required in the scenario, their entries are removed from the SQL database to optimize performance and storage on the server. 
 
+
+
 **Results and Discussion**
 **_Regression AI Implementation_**
+
 To evaluate the effectiveness of our AI assessment module, we conducted a thorough analysis using purposely generated data with a decreasing trend. The primary goal was to determine if our system would yield increasing numbers as a result. As expected, the outcome of the assessment revealed that all skills showcased a consistent upward trendline. These findings align with our initial expectations and provide evidence of the module's capability to generate favorable outcomes even when presented with valid data. This outcome affirms the robustness and reliability of our AI assessment module in delivering accurate and reliable assessments.
 
 _Figure 2. AI Skill Assessment Output_
@@ -46,7 +55,10 @@ _Figure 4. Output Data Trend_
 
 <img width="620" alt="Screen Shot 2023-07-20 at 9 53 03 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/43daa41c-4a2a-4b25-9c67-c4216c0860b2">
 
+
+
 **_Storing in Database_**
+
 To ensure the precision and correctness of our MySQL schema and code, we utilized pgAdmin, an open-source administration and development platform specifically tailored for PostgreSQL. By leveraging the capabilities of this platform, we were able to rigorously test our implementation and validate the accuracy of data storage within the database.
 Throughout the testing process, we conducted various assessments and examinations to ascertain that the data were appropriately stored. We meticulously verified the integrity of the database by performing checks on the consistency, completeness, and accuracy of the stored information.
 The accompanying figures presented below provide visual evidence of the successful storage of all data in the database. These figures serve as concrete proof that our MySQL schema and code effectively perform their intended function of storing data accurately and reliably.
@@ -56,6 +68,7 @@ _Figure 5. Data Stored in Database_
 <img width="500" alt="Screen Shot 2023-07-20 at 10 09 39 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/c47bac80-689f-4efc-9853-67dfd261690d">
 
 **_AI feedback_**
+
 We have achieved successful integration of the ChatGPT API into our system, enabling us to provide personalized feedback. By utilizing this API, we have implemented a mechanism to deliver customized responses and tailored suggestions based on user interactions. This integration has allowed us to enhance the user experience and provide more relevant and accurate feedback to our users.
 
 _Figure 6. AI Feedback Based on Increasing Trend_
@@ -63,7 +76,9 @@ _Figure 6. AI Feedback Based on Increasing Trend_
 <img width="1038" alt="Screen Shot 2023-07-20 at 10 10 27 am" src="https://github.com/dotori0409/AI-feedback-system/assets/71887438/6108e667-d0fc-4200-a66a-318109a2a248">
 
 
+
 **Design Iteration**
+
 The first design iteration is a type of binary classifier to classify if the user has a certain job-specific soft skill or not. These skills include stress management, decision-making, and adaptability. The initial input attributes include time response, tool correction, number of errors, user button press amount, and task completion status. The classifiers used include decision tree, random forest, and K-Nearest neighbors (KNN). It only demonstrates iteration to show the whole process to the client, so there are no additional processing methods to improve the classification performance. The classification output is binary, which means it only indicates if the user has the skills or not. Can use regression method to indicate skill level next time.
 
 _Figure 7. First Design Iteration_
